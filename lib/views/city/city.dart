@@ -1,3 +1,4 @@
+import 'package:demobloc/views/city/widgets/activity_card.dart';
 import 'package:flutter/material.dart';
 import '../../data/data.dart' as data;
 import '../../models/activity.model.dart';
@@ -14,18 +15,23 @@ class _CityState extends State<City> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: const Icon(Icons.chevron_left),
-          title: const Text('Paris'),
-          actions: const <Widget>[
-            Icon(Icons.more_vert),
-          ],
+      appBar: AppBar(
+        leading: const Icon(Icons.chevron_left),
+        title: const Text('Paris'),
+        actions: const <Widget>[
+          Icon(Icons.more_vert),
+        ],
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: widget.activities
+              .map(
+                (activity) => ActivityCard(activity: activity),
+              )
+              .toList(),
         ),
-        body: Container(
-          padding: const EdgeInsets.all(10),
-          child: const Column(
-            children: <Widget>[],
-          ),
-        ));
+      ),
+    );
   }
 }
